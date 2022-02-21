@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <title>Fragments UI</title>
     <link rel="stylesheet" href="https://unpkg.com/bamboo.css" />
-    <script type="module" src="src/app.js"></script>
-  
+    <script type="module" src="src/app.js">
+    </script>
   </head>
   <body>
     <h1>Fragments UI</h1>
@@ -14,9 +14,9 @@
     </section>
     <section hidden id="user">
       <h2>Hello <span class="username"></span>!</h2>
-      <form action="/" method="GET" id="form">
+      <form id="form" class="form">
         <label for="fragmentdata">Enter a plain text fragment data:</label>
-        <input type="text" id="fragment" name="fragment"><br><br>
+        <input type="text" name="value" ><br><br>
         <input  id="formSubmit" type="submit" value="Submit">
       </form>
     </section>

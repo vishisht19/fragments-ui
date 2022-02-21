@@ -7,7 +7,6 @@ async function init() {
   const userSection = document.querySelector('#user');
   const loginBtn = document.querySelector('#login');
   const logoutBtn = document.querySelector('#logout');
-  const submitBtn = document.querySelector('#formSubmit');
 
   // Wire up event handlers to deal with login and logout.
   loginBtn.onclick = () => {
@@ -21,20 +20,15 @@ async function init() {
     Auth.signOut();
   };
 
-
- 
-  
   const user = await getUser();
   if (!user) {
     // Disable the Logout button
     logoutBtn.disabled = true;
     return;
   }
-//var data = document.getElementById("fragment").value;
+
   // Do an authenticated request to the fragments API server and log the result
   getUserFragments(user);
-
-  postData(user,'data');
 
   // Log the user info for debugging purposes
   console.log({ user });
@@ -45,9 +39,18 @@ async function init() {
   // Show the user's username
   userSection.querySelector('.username').innerText = user.username;
 
-  // Disable the Login button
   loginBtn.disabled = true;
+
+
+  //Get form data and pass it to postData that posts the fragment
+  var form = document.querySelector("form");
+  form.addEventListener("submit", function(event) {
+    let frag = form.elements.value.value;
+    console.log("Saving Fragment value:", frag);
+    event.preventDefault();
+    postData(user,frag);
+  });
 }
 
-// Wait for the DOM to be ready, then start the app
+
 addEventListener('DOMContentLoaded', init);

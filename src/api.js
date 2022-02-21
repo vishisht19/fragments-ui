@@ -28,9 +28,6 @@ export async function getUserFragments(user) {
   }
 }
 
-
-
-
 // Example POST method implementation:
 export async function postData(user,data) {
   // Default options are marked with *
@@ -58,7 +55,3 @@ export async function postData(user,data) {
   // parses JSON response into native JavaScript objects
 }
 
-// postData('https://example.com/answer', { answer: 42 })
-//   .then(data => {
-//     console.log(data); // JSON data parsed by `data.json()` call
-//   });
