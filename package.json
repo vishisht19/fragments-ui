@@ -3,12 +3,10 @@
   "private": true,
   "version": "0.0.1",
   "description": "Fragments UI testing web app",
-  "engines": {
-    "node": ">=16"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx parcel index.html"
+    "start": "npx parcel index.html",
+    "build": "npx parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -18,10 +16,12 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "parcel": "^2.2.1"
+    "parcel": "^2.2.1",
+    "process": "^0.11.10",
+    "querystring-es3": "^0.2.1"
   },
   "dependencies": {
-    "aws-amplify": "^4.3.12",
+    "aws-amplify": "4.3.12",
     "body-parser": "^1.19.2",
     "express": "^4.17.3"
   }

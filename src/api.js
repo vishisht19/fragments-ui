@@ -28,11 +28,11 @@ export async function getUserFragments(user) {
   }
 }
 
-export async function postData(user,data) {
+export async function postData(user,data,contentType) {
   const response = await fetch(`${apiUrl}/v1/fragments`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'text/plain',
+      'Content-Type': contentType,
       Authorization: `Bearer ${user.idToken}`,
     },
     body: data,
@@ -42,5 +42,46 @@ export async function postData(user,data) {
   }
   const data1 = await response.json();
   console.log('Response to Post', { data1 });
+}
+
+export async function getUserFragmentsList(user) {
+  console.log('Requesting user fragments list...');
+  try {
+    const res = await fetch(`${apiUrl}/v1/fragments?expand=1`, {
+      headers: {
+        // Include the user's ID Token in the request so we're authorized
+        Authorization: `Bearer ${user.idToken}`,
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error(`${res.status} ${res.statusText}`);
+    }
+    const data = await res.json(); 
+    console.log('Got user\'s existing fragments metadata', { data });
+    try{
+        if(data.fragments[0] ==null){
+          console.log('No existing fragment saved in the system');
+        }else{
+          for (let i = 0; i<data.fragments.length; i++) {
+            const frag = await fetch(`${apiUrl}/v1/fragments/${data.fragments[i].id}`, {
+              headers: {
+                // Include the user's ID Token in the request so we're authorized
+                Authorization: `Bearer ${user.idToken}`,
+              },
+            });
+            const fragment = await frag.text();
+            console.log('Got user\'s existing fragment data ------->', `${fragment}` , '<--------- for id:',` ${data.fragments[i].id} `);
+          }
+        }
+    }catch (err) {
+      console.error('Unable to call GET /v1/fragment/:id because there is no data stored', { err });
+    }
+   
+    
+    
+  } catch (err) {
+    console.error('Unable to call GET /v1/fragment?expand=1', { err });
+  }
 }
 

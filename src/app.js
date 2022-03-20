@@ -1,6 +1,6 @@
 // src/app.js
 import { Auth, getUser } from './auth';
-import { getUserFragments , postData} from './api';
+import { getUserFragments , getUserFragmentsList, postData} from './api';
 async function init() {
 
   // Get our UI elements
@@ -29,6 +29,7 @@ async function init() {
 
   // Do an authenticated request to the fragments API server and log the result
   getUserFragments(user);
+  getUserFragmentsList(user);
 
   // Log the user info for debugging purposes
   console.log({ user });
@@ -46,9 +47,12 @@ async function init() {
   var form = document.querySelector("form");
   form.addEventListener("submit", function(event) {
     let frag = form.elements.value.value;
+  //  var content = inputs["value1"];
+   let content = form.elements.value1.value;
     console.log("Saving Fragment value:", frag);
+    console.log("Saving Fragment content type:", content);
     event.preventDefault();
-    postData(user,frag);
+    postData(user,frag,content);
   });
 }
 
