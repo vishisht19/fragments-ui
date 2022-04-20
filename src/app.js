@@ -1,6 +1,6 @@
 // src/app.js
 import { Auth, getUser } from './auth';
-import { getUserFragments , getUserFragmentsList, postData} from './api';
+import { getUserFragments , getUserFragmentsList, postData, updateData, deleteData, getData, getMetaData} from './api';
 async function init() {
 
   // Get our UI elements
@@ -49,11 +49,40 @@ async function init() {
     let frag = form.elements.value.value;
   //  var content = inputs["value1"];
    let content = form.elements.value1.value;
-    console.log("Saving Fragment value:", frag);
-    console.log("Saving Fragment content type:", content);
+   let url=form.elements.value2.value;
+   let contentType=form.elements.value3.value;
+   let data=form.elements.value4.value;
+   let urlID=form.elements.value5.value;
+   let id=form.elements.value6.value;
+   let metaid=form.elements.value7.value;
+   
     event.preventDefault();
-    postData(user,frag,content);
+    if(frag!=''){
+      postData(user,frag,content);
+      console.log("Saving Fragment value:", frag);
+      console.log("Saving Fragment content type:", content);
+    }
+   
+    if(url!=''){
+      updateData(user,data,contentType,url);
+      console.log("Saving New Fragment Data :", data);
+    }
+    if(urlID!=''){
+      deleteData(user,urlID)
+      console.log("Fragment have been deleted :", data);
+    }
+    
+    if(id!=''){
+    getData(user,id);
+    }
+    
+    if(metaid!=''){
+      getMetaData(user,metaid);
+      }
+    
   });
+
+  
 }
 
 

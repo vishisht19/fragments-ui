@@ -14,13 +14,44 @@
     </section>
     <section hidden id="user">
       <h2>Hello <span class="username"></span>!</h2>
+      <h3>All existing Fragment data with Id:</h3>
+      <p id="demo"></p>
+      <img >
+      <p >-----------------------------------------------------------------------------------------</p>
       <form id="form" class="form">
-        <label for="fragmentdata">Enter a plain text fragment data:</label>
+        <label for="fragmentdata">POST a fragment data of any content type:</label>
         <input type="text" name="value" ><br><br>
         <label for="fragmentContent">Enter the Content Type:</label>
         <input type="text" name="value1" ><br><br>
+  
+        <p id="res"></p>
+        <h3>GET your existing fragment data and also convert it to eligible content types:</h3>
+        <label for="fragmentContent">Enter ID to get the Fragment Data, add extension at the end for conversions:</label>
+        <input type="text" name="value6" ><br><br>
+        <p id="frag"></p>
+
+        <h3>GET your metaData:</h3>
+        <label for="fragmentContent">Enter ID to get the Fragment MetaData:</label>
+        <input type="text" name="value7" ><br><br>
+        <p id="metafrag"></p>
+
+        <h3>UPDATE your existing fragment data below:</h3>
+        <label for="fragmentdata">Please enter fragment Id who's data you want to change:</label>
+        <input type="text" name="value2" ><br><br>
+        <label for="fragmentContent">Enter the Content Type(It must be similar to the original Fragment Data):</label>
+        <input type="text" name="value3" ><br><br>
+        <label for="fragmentContent">Enter the new Data:</label>
+        <input type="text" name="value4" ><br>
+        <h3>DELETE your existing fragment data:</h3>
+        <label for="fragmentContent">Enter the Id of fragment you want to delete:</label>
+        <input type="text" name="value5" ><br><br>
+
+
+
         <input  id="formSubmit" type="submit" value="Submit">
       </form>
+    
+      
     </section>
   </body>
 </html>
