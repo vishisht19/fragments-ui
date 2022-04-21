@@ -42,12 +42,10 @@ async function init() {
 
   loginBtn.disabled = true;
 
-
   //Get form data and pass it to postData that posts the fragment
   var form = document.querySelector("form");
   form.addEventListener("submit", function(event) {
-    let frag = form.elements.value.value;
-  //  var content = inputs["value1"];
+   let frag = form.elements.value.value;
    let content = form.elements.value1.value;
    let url=form.elements.value2.value;
    let contentType=form.elements.value3.value;
@@ -61,29 +59,30 @@ async function init() {
       postData(user,frag,content);
       console.log("Saving Fragment value:", frag);
       console.log("Saving Fragment content type:", content);
+      form.reset();
     }
    
     if(url!=''){
       updateData(user,data,contentType,url);
       console.log("Saving New Fragment Data :", data);
+      form.reset();
     }
     if(urlID!=''){
-      deleteData(user,urlID)
+      deleteData(user,urlID);
       console.log("Fragment have been deleted :", data);
+      form.reset();
     }
     
     if(id!=''){
     getData(user,id);
+    form.reset();
     }
     
     if(metaid!=''){
       getMetaData(user,metaid);
+      form.reset();
       }
     
   });
-
-  
 }
-
-
 addEventListener('DOMContentLoaded', init);

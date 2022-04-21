@@ -17,6 +17,7 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "parcel": "^2.2.1",
+    "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "querystring-es3": "^0.2.1"
   },
@@ -24,7 +25,10 @@
     "aws-amplify": "4.3.12",
     "body-parser": "^1.19.2",
     "buffer": "^6.0.3",
+    "content-type": "^1.0.4",
     "express": "^4.17.3",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "node-blob": "^0.0.2",
+    "path": "^0.12.7"
   }
 }
