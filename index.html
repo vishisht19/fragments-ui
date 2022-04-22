@@ -23,8 +23,16 @@
         <label for="fragmentdata">Enter a fragment data of any content type (To enter an image fragment, specify its full path):</label>
         <input type="text" name="value" ><br><br>
         <label for="fragmentContent">Enter the Content Type:</label>
-        <input type="text" name="value1" ><br><br>
-  
+        <input type="text" name="value1" ><br><br><br>
+
+        <div class="input-group">
+          <h3>POST an Image fragment :</h3>
+          <label for='files'>Select files</label>
+          <input id='files' type="file" multiple>
+          <label >Enter the Content Type of the Image:</label>
+          <input type="text" name="value8" ><br><br>
+      </div><br><br>
+
         <p id="res"></p>
         <h3>GET your existing fragment data you can also convert it to eligible content types using an extension at the end:</h3>
         <label for="fragmentContent">Enter ID to get the Fragment Data, add extension at the end for conversions:</label>
@@ -39,6 +47,9 @@
         <h3>UPDATE your existing fragment data below:</h3>
         <label for="fragmentdata">Please enter fragment Id who's data you want to change:</label>
         <input type="text" name="value2" ><br><br>
+
+   
+
         <label for="fragmentContent">Enter the Content Type(It must be similar to the original Fragment Data):</label>
         <input type="text" name="value3" ><br><br>
         <label for="fragmentContent">Enter the new Data:</label>

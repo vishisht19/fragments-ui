@@ -56,10 +56,12 @@ export async function getData(user,id) {
   if (!response.ok) {
     throw new Error(`${response.status} ${response.statusText}`);
   }
+
   const { type } = contentType.parse(response.headers.get('content-type'));
-  if(type.includes('image')){//conversion between images takes place using the content type. 
-  document.getElementById("frag").innerHTML += `<img src=data:${type};base64,` +`${await response.text()}`+`>` ;
+  if(type.includes('image')){
+        document.getElementById("frag").innerHTML += `<img src=data:${type};base64,` +`${await response.text()}`+`>` ;
   }
+
   else{
     const data1 = await response.text();
     document.getElementById("frag").innerHTML += '<p>'  +    `Please note ------->` + '<b>' + `${data1}`  + '</b>' + `<---------  `+ '</p>';

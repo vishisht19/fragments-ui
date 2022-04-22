@@ -1,6 +1,7 @@
 // src/app.js
 import { Auth, getUser } from './auth';
 import { getUserFragments , getUserFragmentsList, postData, updateData, deleteData, getData, getMetaData} from './api';
+var Buffer = require('buffer/').Buffer;
 async function init() {
 
   // Get our UI elements
@@ -45,6 +46,8 @@ async function init() {
   //Get form data and pass it to postData that posts the fragment
   var form = document.querySelector("form");
   form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
    let frag = form.elements.value.value;
    let content = form.elements.value1.value;
    let url=form.elements.value2.value;
@@ -53,8 +56,15 @@ async function init() {
    let urlID=form.elements.value5.value;
    let id=form.elements.value6.value;
    let metaid=form.elements.value7.value;
+   let imgType=form.elements.value8.value;
    
-    event.preventDefault();
+   const files = document.getElementById("files");
+    var buf =  files.files[0];
+    if(imgType!=''){
+    postData(user,buf,imgType);
+    form.reset();
+    }
+    
     if(frag!=''){
       postData(user,frag,content);
       console.log("Saving Fragment value:", frag);
@@ -82,7 +92,6 @@ async function init() {
       getMetaData(user,metaid);
       form.reset();
       }
-    
   });
 }
 addEventListener('DOMContentLoaded', init);
