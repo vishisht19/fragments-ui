@@ -64,10 +64,9 @@ export async function getData(user,id) {
   const { type } = contentType.parse(response.headers.get('content-type'));
   if(type.includes('image')){
     var url=await response.text();
-    console.log('Base64 image',url)
-        document.getElementById("frag").innerHTML += `<img src=data:${type};base64,` +`${url}`+`>` ;
+    document.getElementById("frag").innerHTML += `${type}` ;
+    document.getElementById("frag").innerHTML += `<img src=data:${type};base64,` +`${url}`+`>` ;
   }
-
   else{
     const data1 = await response.text();
     document.getElementById("frag").innerHTML += '<p>'  +    `Please note ------->` + '<b>' + `${data1}`  + '</b>' + `<---------  `+ '</p>';
@@ -86,7 +85,6 @@ export async function getMetaData(user,id) {
   }
   const data1 = await response.text();
   console.log('Response to GET MetaData', ` ${data1} `);
-  
  document.getElementById("metafrag").innerHTML += '<p>'  +    `Please note ------->` + '<b>' + `${data1}`  + '</b>' + `<---------  `+ '</p>';
  return data1;
 }

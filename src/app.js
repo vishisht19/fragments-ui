@@ -62,7 +62,6 @@ async function init() {
     if(imgType!=''){
       const files = document.getElementById("files");
       var file_data = files.files[0];
-      console.log("Buffer stream",file_data.text())
     postData(user,file_data,imgType);
     form.reset();
     }
