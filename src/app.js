@@ -2,6 +2,7 @@
 import { Auth, getUser } from './auth';
 import { getUserFragments , getUserFragmentsList, postData, updateData, deleteData, getData, getMetaData} from './api';
 var Buffer = require('buffer/').Buffer;
+var fr=new FileReader();
 async function init() {
 
   // Get our UI elements
@@ -58,10 +59,11 @@ async function init() {
    let metaid=form.elements.value7.value;
    let imgType=form.elements.value8.value;
    
-   const files = document.getElementById("files");
-    var buf =  files.files[0];
     if(imgType!=''){
-    postData(user,buf,imgType);
+      const files = document.getElementById("files");
+      var file_data = files.files[0];
+      console.log("Buffer stream",file_data.text())
+    postData(user,file_data,imgType);
     form.reset();
     }
     

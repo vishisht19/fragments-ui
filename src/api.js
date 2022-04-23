@@ -41,8 +41,12 @@ export async function postData(user,data,contentType) {
   }
   const data1 = await response.json();
   console.log('Response to Post', { data1 });
-  document.getElementById("res").innerHTML += '<p>'  +    `Please note the Id ------->` + '<b>' + `${data1.fragment.id}`  + '</b>' + `<---------  `+ '</p>';
-
+  if(data1.fragment.type.includes('image')){
+    document.getElementById("res").innerHTML += '<p>'  +    `Please note the Id ------->` + '<b>' + `${data1.fragment.id}`  + '</b>' + `<---------  `+ '</p>';
+  }
+else{
+  document.getElementById("response").innerHTML += '<p>'  +    `Please note the Id ------->` + '<b>' + `${data1.fragment.id}`  + '</b>' + `<---------  `+ '</p>';
+}
 }
 
 //GET /:id
@@ -59,7 +63,9 @@ export async function getData(user,id) {
 
   const { type } = contentType.parse(response.headers.get('content-type'));
   if(type.includes('image')){
-        document.getElementById("frag").innerHTML += `<img src=data:${type};base64,` +`${await response.text()}`+`>` ;
+    var url=await response.text();
+    console.log('Base64 image',url)
+        document.getElementById("frag").innerHTML += `<img src=data:${type};base64,` +`${url}`+`>` ;
   }
 
   else{
